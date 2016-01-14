@@ -1,0 +1,15 @@
+{% if __SELF__.getPages() is empty %}
+    <h4>Something has gone wrong, we can't find the content for this section.</h4>
+{% else %}
+    {% for page in __SELF__.getPages() %}
+        {% if not page.is_hidden %}
+            <div class="card">
+                <h3 class="card-header">{{ page.title }}</h3>
+
+                <div class="card-block">
+                    {{ page.getProcessedMarkup|raw }}
+                </div>
+            </div>
+        {% endif %}
+    {% endfor %}
+{% endif %}
