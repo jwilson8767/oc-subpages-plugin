@@ -1,13 +1,18 @@
 <?php namespace Jwilson8767\Subpages\Components;
 
+use Cms\Classes\CmsException;
+use Cms\Classes\CodeBase;
 use Cms\Classes\ComponentBase;
 use League\Flysystem\Exception;
 use RainLab\Pages\Classes\Page;
+use RainLab\Pages\Classes\Snippet;
 
 class Subpages extends ComponentBase
 {
     /** @var  $pages Page[] */
     protected $pages = [];
+
+    protected $theme;
 
     public function componentDetails()
     {
@@ -47,17 +52,17 @@ class Subpages extends ComponentBase
                 throw new \Exception('Subpages component used on non-Static Pages page without page name');
             }
         }
-        //init components on subpages.
+    }
+
+    public function onRender()
+    {
+        ob_start();
         foreach ($this->pages as $page) {
             $page->initCmsComponents($this->controller);
+
+            echo $this->renderPartial('subpages::subpage.htm', ['page' => $page]);
         }
-
+        return ob_get_clean();
     }
-
-    public function getPages()
-    {
-        return $this->pages;
-    }
-
 
 }
