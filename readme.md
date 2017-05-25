@@ -1,6 +1,8 @@
 OctoberCms Subpages Plugin
 ==========================
 
+## This project is no longer being maintained.
+
 - [Overview](#introduction)
     - [Pre-requisites](#prerequisites)
 - [Installation](#installation)
