@@ -11,7 +11,7 @@ use System\Classes\PluginBase;
  */
 class Plugin extends PluginBase
 {
-    public $require = ['Rainlab.Pages'];
+    public $require = ['RainLab.Pages'];
 
     /**
      * Returns information about this plugin.
